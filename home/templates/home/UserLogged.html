@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li ><a href="/schedule">Schedule</a></li>
+      <li><a href="/venue">Venue</a></li>
+      <li  ><a href="/dashboard">Dashboard</a></li>
+      <li ><a href="/submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+{% block detail %}
+
+<h1>ideas</h1>
+{% for i,j in ideas.items %}
+    {% for m,n in j.items %}
+        <p>{{i}}</p><p>{{n}}</p>
+    {% endfor %}
+{% endfor %}
+{%endblock%}

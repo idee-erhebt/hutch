@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% load static %}
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li  class="active"><a href="#">Home</a></li>
+      <li ><a href="schedule">Schedule</a></li>
+      <li ><a href="venue">Venue</a></li>
+      <li ><a href="dashboard">Dashboard</a></li>
+      <li ><a href="submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+{%block detail%}
+    <div style="margin-left:5px;">
+        <h1 style="text-align:center;text-decoration:underline;"><ul>Colloquium on Smarter Cities</ul></h1>
+        <h4 style="text-align:center">17th-18th Feburary,2017</h4>
+        <p style="font-size:20px;"><i>
+        The Colloquium on Smarter Cities is organized jointly by M. S. Ramaiah Institute of Technology(MSRIT), Bangalore
+         and the Robert Bosch Centre for Cyber Physical Systems (RBCCPS), Indian Institute of Science, Bangalore under TEQIP-II
+            and will be held on MSRIT campus during 17-18 February, 2017.
+        </i></p>
+        <h1 style="text-align:center;text-decoration:underline;">Smarter Cities</h1>
+        <div style="font-size:20px;"><i>The goal of the colloquium is to provide a platform for domain experts, researchers, practitioners, and students to exchange ideas on technologies and practical experiences related to Smarter Cities. It will cover various aspects of Smarter Cities such as energy, transportation, water, healthcare, education, pollution and tourism with a focus on state-of-the-art technologies, methodologies, and best practices. The colloquium should be of interest to:
+        </i>
+        <ul><i>
+            <li>Researchers in the Smarter Cities domain</li>
+            <li>Supervisors of research students</li>
+            <li>Participants in smarter city projects</li>
+            <li>Graduate students in engineering and management streams</li>
+        </i></ul>
+        </div>
+        <br>
+        <div style="font-size:20px;"><i>The colloquium will have two tracks. <ul><li>
+            One track will have invited talks by eminent speakers and experts. </li><li>
+            The other track, which will be an Ideathon, will be for students.</li></ul></i></div>
+        </div>
+        <h1><p style="text-align:center;text-decoration:underline;"><b><i>Organizers</i></b> </p></h1>
+<br><br>
+        <a href="http://www.msrit.edu/" target="_blank" style="text-decoration:none;">       <p style="text-align:center;"> <img src="{% static 'home/ramaiah.png' %}" alt="ramaih_logo" style="align:center;"></p>
+               <h2 style="text-align:center;">M.S.RAMAIAH INSTITUTE OF TECHNOLOGY </h2></a>
+<br><br><br>
+ <a href="https://rbccps.org/" target="_blank" style="text-decoration:none;">           <p style="text-align:center;">    <img src="{% static 'home/robert.png' %}" alt="ramaih_logo" style="align:center;"></p>
+              <h2 style="text-align:center;">Robert Bosch Centre for Cyber Physical Systems (RBCCPS)</h2></a>
+{% endblock%}

@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li  class="active"><a href="#">Schedule</a></li>
+      <li ><a href="/venue">Venue</a></li>
+      <li ><a href="/dashboard">Dashboard</a></li>
+      <li ><a href="/submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+
+{%block detail%}
+<h1 style="text-decoration:underline;text-align:center;">Tentative Schedule</h1>
+<p style="text-align:center;"><img src="{% static 'home/tentative.png' %}" alt="tentative_schedule" style="width:60%"></p>
+{% endblock%}

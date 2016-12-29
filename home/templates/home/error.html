@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li ><a href="/schedule">Schedule</a></li>
+      <li><a href="/venue">Venue</a></li>
+      <li  ><a href="/dashboard">Dashboard</a></li>
+      <li class="active"><a href="/submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+{% block test %}
+<script>
+    alert("gender is missing");
+</script>
+  {%endblock%}
+{% block detail %}
+
+<div style="text-align:center">
+<h1>Submit-idea</h1>
+
+<form role="form" action="" method="post">
+
+    {% csrf_token %}<!--it makes form scure-->
+    {{ form.as_p}}
+    <button type="submit">Submit</button>
+</form>
+</div>
+
+{% endblock%}

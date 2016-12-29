@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li ><a href="/schedule">Schedule</a></li>
+      <li><a href="/venue">Venue</a></li>
+      <li  ><a href="/dashboard">Dashboard</a></li>
+      <li class="active"><a href="/submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+
+{% block detail %}
+<div style="text-align:center">
+<p>Thanks for your response.We will shortly put up your idea in the Dashboard and inform you about the applicants who want to team up with you
+</p>
+</div>
+
+{% endblock%}

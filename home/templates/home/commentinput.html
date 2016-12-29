@@ -1,0 +1,50 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li ><a href="/schedule">Schedule</a></li>
+      <li><a href="/venue">Venue</a></li>
+      <li  class="active"><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+
+{% block detail %}
+<script>
+$(document).ready(function() {
+$("#flip").click(function(e) {
+e.preventDefault();
+$("#letsdo").slideToggle("slow");
+});});
+</script>
+<p style="text-align:center;font-size:30px;">IDEA--><a href="/getme/{{formId}}"> Clcik here to download the idea</a></p>
+<br>
+<div id="flip" style="text-align:center;">Members of the idea(name email-d and phone number)</div>
+<div id="letsdo" style="text-align:center;">
+{% for i,j in finalised.items %}
+    <p>{{j}}</p>
+{% endfor%}
+</div>
+    <div style="text-align:center">
+    <h1>Forum</h1>
+        <table class="table-condensed">
+    {% for k in lists %}
+        {% for i,j in material.items %}
+            {% ifequal k i %}
+                {% for m,n in j.items %}
+                    <tr><td style="font-size:30px;"> <b><i>{{m}}</i></b><td>::><td style="font-size:20px;"><i>{{n}}</i></td></tr>
+
+                {% endfor %}
+            {% endifequal %}
+        {% endfor %}
+    {% endfor %}
+            </table>
+    <form role="form" action="" method="post">
+        {% csrf_token %}<!--it makes form secure-->
+        {{ form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+{% endblock %}

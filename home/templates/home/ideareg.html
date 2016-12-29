@@ -1,0 +1,46 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li ><a href="/schedule">Schedule</a></li>
+      <li><a href="/venue">Venue</a></li>
+      <li  class="active"><a href="/dashboard">Dashboard</a></li>
+      <li ><a href="/submittion">Submit Idea</a></li>
+</ul>
+    {%endblock%}
+{% block test %}
+  {%endblock%}
+{% block detail %}
+
+<div style="text-align:center">
+<h1>Submit-idea</h1>
+ <script>
+    {% if messages %}
+        {% for message in messages %}
+            alert(message);
+        {% endfor %}
+    {% endif %}
+    </script>
+{{ form.errors }}
+{{ form.non_field_errors }}
+<form role="form" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}<!--it makes form scure-->
+
+    <p>First Name :   {{form.firstName}}</p><br>
+    <p>Last Name : {{form.lastName}}</p><br>
+    <p>Gender : {{form.sex}}</p><br>
+    <p>Phone-Number : {{form.phoneNumber}}</p><br>
+    <p>Email-Id : {{form.mailId}}</p><br>
+    <p>Resume(in pdf)</p>
+    <p style="margin-left:550px;">{{ form.ideaFile}}</p>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+    <br>
+    <br>
+</form>
+</div>
+
+{% endblock%}

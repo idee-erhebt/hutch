@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title>idea-rise</title>
+	<style type="text/css">
+{% block stylish %}
+{%endblock%}
+.navbar-default {
+    background-color: rgb(0,0,204);
+    border-color: #000000;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #fff000;
+}.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #0000ff  ;
+}
+/* link*/
+.navbar-default .navbar-nav > li > a {
+    color: rgb(255,0,0);
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: red;
+}
+
+li,a{
+    cursor: pointer;
+    cursor: hand;
+}
+
+</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% block test %}
+{% endblock%}
+
+</head>
+
+<img src="{% static 'home/combo.jpg' %}" alt="My image" style="width:100%"/>
+<nav class='nav navbar-default ' >
+<div class='container-fluid'>
+  <div class='nav navbar-header'>
+<a class="navbar-brand" href="#">Smart City Ideathon</a>
+<br>
+  </div>
+    {% block navi %}
+    {%endblock%}
+</div>
+</nav>
+{% block detail %}
+
+{% endblock%}
+{% block realbody %}
+{%endblock%}
+</body>
+</html>

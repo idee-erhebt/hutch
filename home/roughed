@@ -1,0 +1,120 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block navi %}
+<ul class='nav navbar-nav' >
+	  <li ><a href="/">Home</a></li>
+      <li ><a href="/schedule">Schedule</a></li>
+      <li><a href="/venue">Venue</a></li>
+      <li class="active" ><a href="#">Dashboard</a></li>
+      <li ><a href="/submittion">Submit Idea</a></li>
+</ul>
+
+    {%endblock%}
+
+
+class registrated(models.Model):
+    MALE = 'M'
+    FEMALE = 'F'
+    SEX = (
+        (MALE, "Male"),
+        (FEMALE, "Female"))
+
+    firstName = models.CharField(max_length=20, )
+    lastName = models.CharField(max_length=20, blank=False)
+    sex = models.CharField(max_length=1, choices=SEX, verbose_name='Gender ', blank=False)
+    phoneNumber = models.CharField(max_length=10, blank=True)  # validators should be a list
+    mailId = models.EmailField(max_length=50, blank=False)
+    ideaid=models.IntegerField(default=0)
+    ideaName=models.CharField(max_length=20,default='aa')
+    #need a column to insert the resume file
+    # phone_regex = RegexValidator(regex=r'^\+?1?\d{10}$',
+    #                             message="Phone number must be entered in the format: '+999999999'. Up to 10 digits allowed.")
+
+    def __str__(self):
+        return self.firstName+" "+self.lastName+" "+str(self.ideaid)+" "+self.ideaName
+
+
+
+
+
+            m = registered.objects.raw('select * from regi_registered where id='+str(userid) )
+            for i in m:
+                eid=i.emailid
+            n = ideareg.objects.raw('select * from home_ideareg where mailId="' + str(eid)+'"')
+            for o in n:
+                nameChater=o.firstName+" "+o.lastName
+            q=ideareg.objects.raw('select * from home_ideareg where id=' + str(ideaid))
+            for o in q:
+                t=o.ideaTitle
+            model_inst = form.save(commit=False)
+            model_inst.name = nameChater
+            model_inst.ideaName = t
+
+           # form.save()
+            tp=-999999
+            p = chatted.objects.raw('select * from home_chatted where ideaId='+str(ideaid) +' or ideaId='+str(tp))
+            # sendit={}
+   #         s={}
+#            g={}
+            for i in p:
+                l.append(i.timetaken)
+            if(len(l)):
+                n=max(l)
+            else:
+                n=0
+            counted=n+1
+            for i in p:
+  #              s[i.name] = i.question
+                k=chatted(name=i.name,message=i.message,timetaken=i.timetaken,ideaId=i.ideaId,ideaname=i.ideaname)
+                if (k.timetaken == 0):
+                    model_inst.ideaId = ideaid
+                    model_inst.timetaken = counted
+                    counted=counted+1
+            model_inst.save()
+                  #  addques.objects.filter(timetaken=0).delete()
+                   # addques.objects.filter(idForum=-999999).delete()
+                 #   print "i eneter in ", k, k.timetaken
+            p = chatted.objects.raw('select * from home_chatted ')
+            g = {}
+            for i in p:
+                g[i.timetaken] = {i.name: i.question}
+            # counted = counted + 1
+            print g
+            l = list(g)
+            print l
+            print 'in the inner loop'
+ #           print "hheeee"
+            # d=SortedDis
+            return render(request, 'home/chat.html', {
+                'form': form_class, 'material': g, 'lists': l,
+            })
+
+
+    p = chatted.objects.raw('select * from home_chatted ')
+    g = {}
+    print 'in the outer loop'
+    for i in p:
+#        print 'heyy'
+  #      print i.timetaken,i.name,i.question
+#        print 'hello'
+        g[i.timetaken] = {i.name: i.question}
+ #   print 'hwllo'
+    #counted = counted + 1
+  #  print g
+    l=list(g)
+  #  print l
+  #  print "hheeee"
+                # d=SortedDis
+    return render(request, 'home/chat.html', {
+                'form': form_class,'material':g,'lists':l,
+            })
+
+#    return HttpResponse("kkk")
+
+
+
+
+            model_inst=form.save(commit=False)
+            model_inst.accessToIdea=1
+            model_inst.headOfIdea=1
