@@ -5,7 +5,7 @@ from .models import idearegister,addques
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 from django.core.mail import send_mail
-from handle_uploaded_file import handle_uploaded_file
+from handle_uploaded_file import handle_uploaded_file,handle_upload_sendidea,handle_uploaded
 from django.views.static import serve
 from wsgiref.util import FileWrapper
 import os
@@ -195,11 +195,15 @@ def submitit(request):
             for m in k:
                 if(m.ideaTitle==model_inst.ideaTitle):
                     flagIdeatitle=1
+            fileOfIdea = str(model_inst.ideaFile)
+            nameOfIdea = str(model_inst.ideaTitle)
+            mailSender=str(model_inst.mailId)
             if(flagIdeatitle==0):
                 model_inst.save()
             else:
                 return HttpResponse("<script>alert('Try a Different Idea Name');</script><a href='/submittion'>Clcik here to return back to idea submission</a>")
-
+            handle_upload_sendidea(fileOfIdea,nameOfIdea)
+            handle_uploaded(mailSender)
         else:
             print form.errors
             messages.error(request, "Error")
@@ -210,7 +214,7 @@ def submitit(request):
             print k
             if(k[0]=='mailId'):
                 return HttpResponse("<script>alert('enetr a correct mailid');</script><a href='/submittion'>Clcik here to return back to idea submission</a>")
-
+            return HttpResponse("<h1>TRY AGAIN </h1>")
     form_class=IdeaForm()
     return render(request, 'home/ideainput.html', {
         'form': form_class,
